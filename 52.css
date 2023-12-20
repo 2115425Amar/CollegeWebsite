@@ -1,0 +1,442 @@
+/* CSS Reset */
+body {
+    font-family: 'Baloo Bhai', cursive;
+    /* color: white; */
+    margin: 0px;
+    padding: 0px;
+    background: url('/static/wp1874162-restaurant-wallpapers.jpg');
+    background-size: cover;
+    background-repeat: no-repeat ;      
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* CSS Variables */
+:root{
+    --navbar-height: 59px;
+}
+
+/* Navigation Bar */
+#navbar{
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+}
+
+#navbar::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width:100%;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+/* Navigation Bar: Logo and Image */
+ #logo{
+    margin: 10px 34px;
+}
+
+ #logo img{
+    height: 59px;
+    margin: 3px 6px;
+} 
+
+/* Navigation Bar: List Styling */
+
+#navbar ul{
+    display: flex;
+    font-family: 'Baloo Bhai', cursive;
+}
+
+#navbar ul li{ 
+    list-style: none;
+    font-size: 1.3rem;
+}
+
+#navbar ul li a{
+    color: white;
+    display: block;
+    padding: 3px 22px;
+    border-radius: 20px;
+    text-decoration: none;
+}
+
+#navbar ul li a:hover{
+    color: black;
+    background-color: white;
+}
+#navbar ul li a::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #f44336;
+    display: block;
+    margin: auto;
+    transition: 1s;
+}
+#navbar ul li a:hover::after{
+    width: 100%;
+}
+
+/* Home Section */
+#home{
+    display: flex;
+    flex-direction: column;
+    padding:3px 200px;
+    height: 550px;
+    justify-content: center;
+    align-items: center;
+}
+
+#home::before{ 
+    content: "";
+    position: absolute;
+    left: 0px;
+    background: url(https://i.ytimg.com/vi/5LE8mg8Khbo/maxresdefault.jpg) no-repeat center center/cover;
+    height: 642px;
+    top:0px;
+    left:0px;
+    width: 100%;
+    z-index: -1;
+    opacity:0.89;
+}
+
+#home h1{
+    color:white;
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+}
+
+#home p{
+    color:white;
+    text-align: center;
+    font-size: 1.5rem;
+    font-family: 'Bree Serif', serif;
+}
+/* Services Section */
+#services{
+    margin: 34px;
+    display: flex;
+}
+#services .box{ 
+    border: 2px solid brown;
+    padding: 34px;
+    margin: 2px 55px;
+    border-radius: 28px;
+    background: #f2f2f2;
+    margin-bottom: 20px;
+}
+
+#services .box img{ 
+   height: 160px;
+   margin: auto;
+   display: block;
+}
+
+#services .box p{
+    font-family: 'Bree Serif', serif;
+} 
+
+.btn{
+   padding: 6px 20px;
+   border: 2px solid white;
+   background-color: brown;
+   color: white;
+   margin: 17px;
+   font-size: 1.5rem;
+   border-radius: 10px;
+   cursor:pointer;
+}
+.btn:hover{
+    color: rgb(249, 253, 251);
+    background-color: rgb(59, 12, 228);
+}
+
+/* Clients Section */
+#client-section{ 
+    position: relative;
+}
+
+#client-section::before{
+ content: "";
+ position: absolute;
+ /* background: url('/static/bg.jpg'); */
+ width: 100%;
+ height: 100%;
+ z-index: -1;
+ opacity: 0.3;
+}
+
+#clients{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.client-item{
+    padding: 34px;
+}
+
+#clients img{
+    height: 124px;
+}
+
+
+/* Utility Classes */
+.h-primary{
+    font-family: 'Bree Serif', serif;
+    font-size: 3.8rem;
+    padding: 12px;
+}
+
+.h-secondary{
+    font-family: 'Bree Serif', serif;
+    font-size: 2.3rem;
+    padding: 12px;
+}
+
+.center{
+    text-align: center;
+}
+
+.menu{
+      height:auto;
+      /* border: 2px solid yellow; */
+   }
+   #menu-items div{
+      flex-wrap: wrap;
+      font-size:1.2rem;
+      padding: 20px;
+      margin:10px 10px;
+   }
+   .h1-primary{
+      padding: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+   }
+   #menu-items{
+      flex-wrap: wrap;
+      justify-content: center;
+   }
+   .marq marquee{
+      behavior: slide;
+      font-size: 14px;
+   }
+  #review{
+     grid-template-columns: 1fr;
+  }
+  
+
+  .customer {
+     width: auto;
+     font-size: 2rem;
+  }
+  .content{
+   padding: 18px;
+   overflow: hidden;
+  }
+  .p-review{
+     padding: 5px;
+     font-size: 1rem;
+  }
+  .h3-review{
+     font-size: 1.2rem;
+  }
+
+
+@media screen and (max-width:767px){
+   .rev{
+      flex-direction: row;
+   }
+   .revimg{
+      width: auto;
+   }
+}
+@media screen and (max-width:550px){
+   .rev{
+      flex-direction: column;
+      align-items:center;
+      justify-content: space-evenly;
+   }
+   
+   .revimg{
+      width: 80%;
+      margin: 0;
+   }
+
+   .content{
+   margin: 10px;
+   width: 100%;
+}
+}
+
+.menu{
+   position: relative;
+   /* /background-color: rgba(241, 227, 241, 0.123); */
+   height: 513px;
+   /* border: 2px solid springgreen; */
+   width: 100%;
+   /* align-items: center; */
+   z-index: -2;
+}
+#menu-items{
+   width: 100%;
+   /* border: 2px solid red; */
+   display: flex;
+      align-items: center;
+   justify-content: space-between;
+   flex-wrap: wrap;
+}
+#menu-items div a{
+   text-decoration: none;
+   color: white;
+}
+
+#menu-items div{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin: 25px 25px;
+   padding: 35px;
+   width:300px;
+   min-height: 50px;
+   box-sizing: border-box;
+   /* border: 2px solid white; */
+   background-color:coral;   /* box-sizing:content-box; */
+   box-shadow:5px 5px 8px grey;
+   font-family: 'Gowun Batang', serif;
+   font-size:2rem;
+   color: white;
+   border-radius:40px;
+}
+.marq{
+   color:white;
+   margin-top: 34px;
+   margin-bottom: 34px;
+   font-size: 35px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   background-color: rgb(56, 29, 231);
+}
+#review{
+   background-color: rgba(233, 208, 153, 0.349);
+   padding: 50px 50px;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   justify-content:space-evenly;
+   align-items: center;
+   grid-gap: 1.2rem;
+  
+}
+.rev{
+   box-sizing: border-box;
+   overflow:hidden;
+   padding: 1.4rem;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   width:100%;
+   background-color: rgb(250, 250, 250);
+   box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.411);
+   border-radius: 10px;
+}
+.rvimg{
+   box-sizing: border-box;
+   width: 50%;
+}
+.content{
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   background-color: rgba(29, 29, 29, 0.205);
+   padding: 15px;
+   margin-left: 5px;
+   width: 50%;
+}
+.h3-review{
+   font-size: 1.5rem;
+   text-align: center;
+   /* border: 2px solid white; */
+   color: rgba(63, 57, 57, 0.849);
+}
+.p-review{
+   font-size: 1.1rem;
+   text-align:center;
+   margin-top: 10px;
+   /* font-weight: bold; */
+}
+.customer{
+   border-radius: 50px;
+   width:500px;
+   margin: auto;
+   margin-bottom: 35px;
+   text-align: center;
+   padding:16px;
+   align-items: center;
+   color: white;
+   font-size: 2.8rem;
+   background-color: coral;
+   font-family: 'Gowun Batang', serif;
+}
+
+footer{
+   box-sizing: border-box;
+   display: grid;
+   background-color: #000;
+   grid-template-columns:repeat(3, 1fr);
+color: white;
+justify-content:space-around;
+padding: 3rem;
+grid-row-gap: 30px;
+}
+.footerIndex{
+   display: flex;
+   flex-direction:column;
+   width: 80%;
+   /* border: 1px solid red; */
+}
+.footerIndex ul{
+   padding: 0;
+}
+.footerIndex ul li{
+   cursor: pointer;
+   list-style: none;
+   padding: 0.3rem 0;
+   font-size: 1.1rem;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.footerIndex h2{
+   color: gray;
+   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.footerEnd img{
+   width: 70px;
+   height: 70px;
+   border-radius: 50%;
+}
+.footerEnd{
+   background-color: black;
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+   justify-content: space-between;
+   text-align: center;
+   align-items: center;
+   font-size: 1.3rem;
+   color: white;
+   border-top: 1px solid grey;
+   padding: 1rem;
+}
+.footerEnd svg{
+   margin: 1rem;
+}

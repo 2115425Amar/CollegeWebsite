@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Student Record</title>
+     
+</head>
+<body >
+    <div class="front">
+	<CENTER><h2>Contact Form</h2></CENTER></div>
+    <script>
+        var selectedRow = null
+ 
+ function onFormSubmit() {
+     if (validate()) {
+         var formData = readFormData();
+         if (selectedRow == null){ 
+             insertNewRecord(formData);
+         }
+        else{   
+             updateRecord(formData);
+         }
+         resetForm();
+     }
+ }
+ 
+ function readFormData() {
+     var formData = {};
+     formData["userName"] = document.getElementById("userName").value;
+     formData["rollNo"] = document.getElementById("rollNo").value;
+     formData["stdClass"] = document.getElementById("stdClass").value;
+   //  formData["tsub"] = document.getElementById("tsub").value;
+     formData["age"] = document.getElementById("age").value;
+     
+     return formData;
+ }
+ function insertNewRecord(data) {
+     var table = document.getElementById("stdlist").getElementsByTagName('tbody')[0];
+     var newRow = table.insertRow(table.length);
+     cell1 = newRow.insertCell(0);
+     cell1.innerHTML = data.userName;
+     cell2 = newRow.insertCell(1);
+     cell2.innerHTML = data.rollNo;
+     cell3 = newRow.insertCell(2);
+     cell3.innerHTML = data.stdClass;
+     cell4 = newRow.insertCell(3);
+     cell4.innerHTML = data.tsub;
+     cell5 = newRow.insertCell(4);
+     cell5.innerHTML = data.age;
+     cell5 = newRow.insertCell(5);
+     cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a>
+     <a onClick="onDelete(this)">Delete</a>`;
+ }
+ function resetForm() {
+     document.getElementById("userName").value = "";
+     document.getElementById("rollNo").value = "";
+     document.getElementById("stdClass").value = "";
+    // document.getElementById("tsub").value = "";
+     document.getElementById("age").value = "";
+     selectedRow = null;
+ }
+ function onEdit(td) {
+     selectedRow = td.parentElement.parentElement;
+     document.getElementById("userName").value = selectedRow.cells[0].innerHTML;
+     document.getElementById("rollNo").value = selectedRow.cells[1].innerHTML;
+     document.getElementById("stdClass").value = selectedRow.cells[2].innerHTML;
+    // document.getElementById("tsub").value = selectedRow.cells[3].innerHTML;
+     document.getElementById("age").value = selectedRow.cells[3].innerHTML;
+ }
+ function updateRecord(formData) {
+     selectedRow.cells[0].innerHTML = formData.userName;
+     selectedRow.cells[1].innerHTML = formData.rollNo;
+     selectedRow.cells[2].innerHTML = formData.stdClass;
+     //selectedRow.cells[3].innerHTML = formData.tsub;
+     selectedRow.cells[3].innerHTML = formData.age;
+ }
+ function onDelete(td) {
+     if (confirm('Are you sure to delete this record ?')) {
+         row = td.parentElement.parentElement;
+         document.getElementById("stdlist").deleteRow(row.rowIndex);
+         resetForm();
+     }
+ }
+ 
+ function validate() {
+     isValid = true;
+     
+     if (document.getElementById("userName").value == "") {
+         isValid = false;
+         document.getElementById("userNamevalidationError").classList.remove("hide");
+     } else {
+         isValid = true;
+         if (!document.getElementById("userNamevalidationError").classList.contains("hide")){
+             document.getElementById("userNamevalidationError").classList.add("hide");
+         }
+     }
+     if (document.getElementById("rollNo").value == "") {
+         isValid = false;
+         document.getElementById("rollNovalidationError").classList.remove("hide");
+     } else {
+         isValid = true;
+         if (!document.getElementById("rollNovalidationError").classList.contains("hide")){
+             document.getElementById("rollNovalidationError").classList.add("hide");
+         }
+     }
+     if (document.getElementById("stdClass").value == "") {
+         isValid = false;
+         document.getElementById("stdClassvalidationError").classList.remove("hide");
+     } else {
+         isValid = true;
+         if (!document.getElementById("stdClassvalidationError").classList.contains("hide")){
+             document.getElementById("stdClassvalidationError").classList.add("hide");
+         }
+     }
+
+     if (document.getElementById("age").value == "") {
+         isValid = false;
+         document.getElementById("agevalidationError").classList.remove("hide");
+     } else {
+         isValid = true;
+         if (!document.getElementById("agevalidationError").classList.contains("hide")){
+             document.getElementById("agevalidationError").classList.add("hide");
+         }
+     }
+     return isValid;
+ }
+    </script>
+  <style>
+    body{
+        /* background: rgb(94, 78, 245); */
+        background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+
+
+        font-size: 16px;
+        /* background-image: url('bgreal.jpg'); */
+    }
+    body > table{
+ width: 100%;
+}
+.front{
+color: whitesmoke;
+}
+
+table{
+ border-collapse: collapse;
+ text-align: center;
+}
+table.list{
+ width:100%;
+ text-align: center;
+}
+table.list td{
+ text-align: center;
+}
+td, th {
+ border: 5px solid black;
+ text-align: left;
+ padding: 8px;
+ font-size: 20px;
+ font-style: inherit;
+}
+tr:nth-child(even),table.list thead>tr {
+ background-color: rgba(128, 128, 128, 0.11);
+}
+input[type=text], input[type=number] {
+ width: 100%;
+ padding: 12px 20px;
+ margin: 8px 0;
+ display: inline-block;
+ border: 1px solid black;
+ border-radius: 4px;
+ box-sizing: border-box;
+}
+input[type=submit]{
+ width: 30%;
+ background-color: rgb(0, 183, 255);
+ color: #000;
+ padding: 14px 20px;
+ margin: 8px 0;
+ border: none;
+ border-radius: 4px;
+ cursor: pointer;
+ font-size: 16px;
+}
+form{
+ background-color:rgb(247, 251, 255);
+ padding: 10px;
+}
+form div.form-action-buttons{
+ text-align: center;
+}
+a{
+ cursor: pointer;
+ text-decoration: underline;
+ color: #0000ee;
+ margin-right: 4px;
+}
+label.validation-error{
+ color:   rgb(233, 10, 10);
+ margin-left: 5px;
+}
+.hide{
+ display:none;
+}
+</style>
+
+    <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                	<h3>Contact Form</h3>
+                    <div>
+                        <label>Full Name</label>
+                        <label class="validation-error hide" id="userNamevalidationError">This field is required</label>
+                        <input type="text" name="userName" id="userName" placeholder="Enter Full Name">
+                    </div>
+                    
+                    <div>
+                        <label>Mobile No</label> 
+                        <label class="validation-error hide" id="rollNovalidationError" >This field is required</label>
+                        <input type="text" name="rollNo" id="rollNo" placeholder="Enter the Mobile No">
+                    </div>
+                    
+                    <div>
+                        <label>Email Address</label>
+                        <label class="validation-error hide" id="stdClassvalidationError">This field is required</label>
+                        <input type="text" name="stdClass" id="stdClass" placeholder="Email Address">
+                    </div>
+                    
+                    <div>
+                        <label>Subject</label>
+                        <label class="validation-error hide" id="agevalidationError">This field is required</label>
+                        <input type="text" name="age" id="age" placeholder="Enter the Subject">
+                    </div>
+                    <div class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="stdlist" style="background-color: #C2976D;">
+                    <thead>
+                        <tr>
+                            <th>Full Name</th>
+                            <th>Mobile no</th>
+                            <th>Email Address</th>
+                            <th>Subject</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body></html>
